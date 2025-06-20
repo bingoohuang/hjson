@@ -483,6 +483,10 @@ func (e *hjsonEncoder) str(
 				e.WriteString(e.Eol + elemCm.Before + elemCm.Key)
 			}
 
+			if i > 0 && e.Eol == "" {
+				e.WriteString(", ")
+			}
+
 			if err := e.str(elem, true, "", false, false, elemCm); err != nil {
 				return err
 			}

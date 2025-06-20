@@ -296,6 +296,9 @@ func (e *hjsonEncoder) writeFields(
 		if i > 0 || !isRootObject || e.EmitRootBraces {
 			e.WriteString(e.Eol)
 		}
+		if i > 0 && e.Eol == "" {
+			e.WriteString(", ")
+		}
 		if len(fi.comment) > 0 {
 			for _, line := range strings.Split(fi.comment, e.Eol) {
 				e.writeIndentNoEOL(e.indent)
